@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SEO Performance Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'base-100': '#FFFFFF',
+              'base-200': '#F1F7F9', // Fortinet Silver Tint 10%
+              'base-300': '#F9E8E8', // Fortinet Red Tint 10%
+              'base-content': '#4B4B4B', // Fortinet Extra Dark Grey
+              'primary': '#DA291C', // Fortinet Red
+              'secondary': '#0072CE', // Fortinet Blue
+              'accent': '#00BFB2', // Fortinet Teal
+              'info': '#0072CE', // Fortinet Blue
+              'success': '#007C3F', // Fortinet Green
+              'warning': '#FFB900', // Fortinet Yellow
+              'error': '#DA291C', // Fortinet Red
+              
+              // Fortinet Greys
+              'lightGrey': '#E0E0E0',
+              'grey': '#B6B6B6',
+              'mediumGrey': '#989898',
+              'darkGrey': '#646464',
+              'extraDarkGrey': '#4B4B4B'
+            },
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "recharts": "https://aistudiocdn.com/recharts@^3.1.2"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-base-300">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
