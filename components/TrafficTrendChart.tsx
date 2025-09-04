@@ -23,8 +23,8 @@ export const TrafficTrendChart: React.FC<TrafficTrendChartProps> = ({ trafficDat
                         }}
                         itemStyle={{ color: '#4B4B4B' }}
                     />
-                    <Legend />
-                    <Line type="monotone" dataKey="traffic" name="Organic Traffic" stroke="#DA291C" strokeWidth={2} activeDot={{ r: 8 }} />
+                    <Legend wrapperStyle={{ color: '#000000' }} />
+                    <Line type="monotone" dataKey="traffic" name="Organic Traffic" stroke="#0072CE" strokeWidth={2} activeDot={{ r: 8 }} />
                 </LineChart>
             </ResponsiveContainer>
         </Card>

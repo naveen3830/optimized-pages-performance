@@ -96,7 +96,7 @@ export const KeywordRankingDistributionChart: React.FC = () => {
                                 <td className="p-2 text-right font-bold text-extraDarkGrey">{totalKeywords}</td>
                             </tr>
                             <tr>
-                                <td className="p-2 text-mediumGrey" colSpan={2}>Remarks: 17 keywords are in Top 5 position</td>
+                                <td className="p-2 font-bold text-black" style={{ fontSize: '0.95rem' }} colSpan={2}>Remarks: 17 keywords are in Top 5 position</td>
                             </tr>
                         </tfoot>
                     </table>
