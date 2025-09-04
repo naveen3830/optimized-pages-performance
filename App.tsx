@@ -12,9 +12,20 @@ import { TopKeywordsList } from './components/TopKeywordsList';
 const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-base-300 text-base-content p-4 lg:p-8 font-sans">
-      <header className="mb-8 text-center">
-        <h1 className="text-4xl font-extrabold text-extraDarkGrey mb-1">Optimized Pages Performance Dashboard</h1>
-        <p className="text-lg text-mediumGrey">Analysis of 80 Optimized pages with monthly performance tracking.</p>
+      <header className="mb-8">
+        <div className="flex items-center justify-between mb-4">
+          <img src="/Fortinet logo png.png" alt="Fortinet" className="h-10 w-auto" />
+          <div className="flex-1 text-center">
+            <h1 className="text-3xl font-extrabold text-extraDarkGrey">Optimized Pages Performance Dashboard</h1>
+            <p className="text-sm text-mediumGrey">Analysis of 80 Optimized pages with monthly performance tracking.</p>
+          </div>
+          <div className="flex flex-col items-center">
+            <img src="/LeadWalnut light logo with tagline 3.png" alt="LeadWalnut" className="h-10 w-auto" />
+            <span className="mt-1 font-extrabold text-extraDarkGrey">
+              {new Date().toLocaleDateString()}
+            </span>
+          </div>
+        </div>
       </header>
       
       <main className="grid grid-cols-1 gap-6">

@@ -1,5 +1,5 @@
 import React from 'react';
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
+import { Treemap, ResponsiveContainer, Tooltip } from 'recharts';
 import { Card } from './Card';
 
 const rankingDistributionData = [
@@ -18,52 +18,56 @@ export const KeywordRankingDistributionChart: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
                 <div className="w-full">
                     <ResponsiveContainer width="100%" height={288}>
-                        <PieChart>
-                            <Pie
-                                data={rankingDistributionData}
-                                cx="50%"
-                                cy="50%"
-                                labelLine={false}
-                                innerRadius={50}
-                                outerRadius={80}
-                                fill="#8884d8"
-                                dataKey="value"
-                                nameKey="name"
-                                label={({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
-                                    const RADIAN = Math.PI / 180;
-                                    const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-                                    const x = cx + radius * Math.cos(-midAngle * RADIAN);
-                                    const y = cy + radius * Math.sin(-midAngle * RADIAN);
-
-                                    return (
-                                        <text
-                                            x={x}
-                                            y={y}
-                                            fill="white"
-                                            stroke="#4B4B4B"
-                                            strokeWidth={1}
-                                            paintOrder="stroke"
-                                            textAnchor="middle"
-                                            dominantBaseline="central"
-                                            className="font-extrabold text-base pointer-events-none"
-                                        >
-                                            {`${(percent * 100).toFixed(0)}%`}
-                                        </text>
-                                    );
-                                }}
-                            >
-                                {rankingDistributionData.map((entry, index) => (
-                                    <Cell key={`cell-${index}`} fill={entry.color} />
-                                ))}
-                            </Pie>
-                            <Tooltip
-                                contentStyle={{
-                                    backgroundColor: 'white',
-                                    border: '1px solid #E0E0E0',
-                                    color: '#4B4B4B'
+                        <Treemap
+                            data={rankingDistributionData}
+                            dataKey="value"
+                            nameKey="name"
+                            stroke="#FFFFFF"
+                            content={({ x, y, width, height, name, value, root }) => {
+                                const percent = ((value as number) / totalKeywords) * 100;
+                                const item = rankingDistributionData.find(d => d.name === name);
+                                const fill = item ? item.color : '#CCCCCC';
+                                return (
+                                    <g>
+                                        <rect 
+                                            x={x} 
+                                            y={y} 
+                                            width={width} 
+                                            height={height} 
+                                            fill={fill} 
+                                            stroke="#FFFFFF" 
+                                            style={{ cursor: 'pointer' }}
+                                        />
+                                        {width > 40 && height > 24 && (
+                                            <text x={x + width / 2} y={y + height / 2} textAnchor="middle" dominantBaseline="central" fill="#FFFFFF" className="font-extrabold">
+                                                {`${percent.toFixed(0)}%`}
+                                            </text>
+                                        )}
+                                    </g>
+                                );
+                            }}
+                        >
+                            <Tooltip 
+                                content={({ active, payload }) => {
+                                    if (active && payload && payload.length > 0) {
+                                        const data = payload[0].payload;
+                                        const percent = ((data.value as number) / totalKeywords) * 100;
+                                        return (
+                                            <div className="bg-white p-3 border border-gray-200 rounded-lg shadow-lg">
+                                                <p className="font-semibold text-gray-800">{data.name}</p>
+                                                <p className="text-sm text-gray-600">
+                                                    Keywords: <span className="font-bold">{data.value}</span>
+                                                </p>
+                                                <p className="text-sm text-gray-600">
+                                                    Percentage: <span className="font-bold">{percent.toFixed(1)}%</span>
+                                                </p>
+                                            </div>
+                                        );
+                                    }
+                                    return null;
                                 }}
                             />
-                        </PieChart>
+                        </Treemap>
                     </ResponsiveContainer>
                 </div>
                 <div className="overflow-y-auto h-full pr-2">

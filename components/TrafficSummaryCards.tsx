@@ -16,7 +16,7 @@ export const TrafficSummaryCards: React.FC = () => {
                 value="80"
             />
             <SummaryCard 
-                title="Monthly Traffic"
+                title="Traffic"
                 value="7,626"
             />
         </div>
