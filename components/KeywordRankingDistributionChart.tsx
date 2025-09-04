@@ -1,12 +1,13 @@
 import React from 'react';
 import { Treemap, ResponsiveContainer, Tooltip } from 'recharts';
 import { Card } from './Card';
+import { fortinetColors, theme } from './fortinetTheme';
 
 const rankingDistributionData = [
-    { name: 'Page 1 (1-10)', value: 44, color: '#007C3F' },
-    { name: 'Page 2 (11-20)', value: 14, color: '#FFB900' },
-    { name: 'Page 3 (21-30)', value: 6, color: '#DA291C' },
-    { name: '> Page 3 (31+)', value: 16, color: '#989898' },
+    { name: 'Page 1 (1-10)', value: 44, color: fortinetColors.primary.green },
+    { name: 'Page 2 (11-20)', value: 14, color: fortinetColors.primary.yellow },
+    { name: 'Page 3 (21-30)', value: 6, color: fortinetColors.primary.purple },
+    { name: '> Page 3 (31+)', value: 16, color: fortinetColors.primary.teal },
 ];
 
 
@@ -22,7 +23,7 @@ export const KeywordRankingDistributionChart: React.FC = () => {
                             data={rankingDistributionData}
                             dataKey="value"
                             nameKey="name"
-                            stroke="#FFFFFF"
+                            stroke={fortinetColors.primary.white}
                             content={({ x, y, width, height, name, value, root }) => {
                                 const percent = ((value as number) / totalKeywords) * 100;
                                 const item = rankingDistributionData.find(d => d.name === name);
@@ -35,7 +36,7 @@ export const KeywordRankingDistributionChart: React.FC = () => {
                                             width={width} 
                                             height={height} 
                                             fill={fill} 
-                                            stroke="#FFFFFF" 
+                                            stroke={fortinetColors.primary.white}
                                             style={{ cursor: 'pointer' }}
                                         />
                                         {width > 40 && height > 24 && (
@@ -53,7 +54,7 @@ export const KeywordRankingDistributionChart: React.FC = () => {
                                         const data = payload[0].payload;
                                         const percent = ((data.value as number) / totalKeywords) * 100;
                                         return (
-                                            <div className="bg-white p-3 border border-gray-200 rounded-lg shadow-lg">
+                                            <div className="bg-white p-3 border rounded-lg shadow-lg" style={{ borderColor: theme.border }}>
                                                 <p className="font-semibold text-gray-800">{data.name}</p>
                                                 <p className="text-sm text-gray-600">
                                                     Keywords: <span className="font-bold">{data.value}</span>

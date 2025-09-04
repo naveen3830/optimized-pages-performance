@@ -1,6 +1,7 @@
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { Card } from './Card';
+import { fortinetColors, theme } from './fortinetTheme';
 
 const rawTrendData = [
     { week: 'Apr 1', 'Page 1': 9, 'Page 2': 10, 'Page 3': 7, '> Page 3': 15 },
@@ -41,12 +42,12 @@ export const WeeklyKeywordTrendChart: React.FC = () => {
                 <span className="text-sm" style={{ color: '#FFB900' }}>Page 2 (11-20)</span>
             </div>
             <div className="flex items-center">
-                <div className="w-3 h-3 rounded-full mr-2" style={{ backgroundColor: '#DA291C' }}></div>
-                <span className="text-sm" style={{ color: '#DA291C' }}>Page 3 (21-30)</span>
+                <div className="w-3 h-3 rounded-full mr-2" style={{ backgroundColor: fortinetColors.primary.purple }}></div>
+                <span className="text-sm" style={{ color: fortinetColors.primary.purple }}>Page 3 (21-30)</span>
             </div>
             <div className="flex items-center">
-                <div className="w-3 h-3 rounded-full mr-2" style={{ backgroundColor: '#989898' }}></div>
-                <span className="text-sm" style={{ color: '#989898' }}>&gt; Page 3 (31+)</span>
+                <div className="w-3 h-3 rounded-full mr-2" style={{ backgroundColor: fortinetColors.primary.teal }}></div>
+                <span className="text-sm" style={{ color: fortinetColors.primary.teal }}>&gt; Page 3 (31+)</span>
             </div>
         </div>
     );
@@ -56,21 +57,21 @@ export const WeeklyKeywordTrendChart: React.FC = () => {
             <div className="w-full h-80">
                 <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={rawTrendData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-                        <CartesianGrid strokeDasharray="3 3" stroke="#E0E0E0" />
-                        <XAxis dataKey="week" stroke="#989898" />
-                        <YAxis stroke="#989898" label={{ value: '# of Keywords', angle: -90, position: 'insideLeft', fill: '#989898', offset: -10 }} />
+                        <CartesianGrid strokeDasharray="3 3" stroke={theme.grid} />
+                        <XAxis dataKey="week" stroke={fortinetColors.primary.mediumGrey} />
+                        <YAxis stroke={fortinetColors.primary.mediumGrey} label={{ value: '# of Keywords', angle: -90, position: 'insideLeft', fill: fortinetColors.primary.mediumGrey, offset: -10 }} />
                         <Tooltip
                             contentStyle={{
                                 backgroundColor: 'white',
-                                border: '1px solid #E0E0E0',
-                                color: '#4B4B4B'
+                                border: `1px solid ${theme.border}`,
+                                color: fortinetColors.primary.extraDarkGrey
                             }}
                         />
                         <Line 
                             type="monotone" 
                             dataKey="Page 1"
                             name="Page 1 (1-10)"
-                            stroke="#007C3F" 
+                            stroke={fortinetColors.primary.green}
                             strokeWidth={2} 
                             activeDot={{ r: 8 }} 
                         />
@@ -78,7 +79,7 @@ export const WeeklyKeywordTrendChart: React.FC = () => {
                             type="monotone" 
                             dataKey="Page 2"
                             name="Page 2 (11-20)"
-                            stroke="#FFB900" 
+                            stroke={fortinetColors.primary.yellow}
                             strokeWidth={2} 
                             activeDot={{ r: 8 }} 
                         />
@@ -86,7 +87,7 @@ export const WeeklyKeywordTrendChart: React.FC = () => {
                             type="monotone" 
                             dataKey="Page 3"
                             name="Page 3 (21-30)"
-                            stroke="#DA291C" 
+                            stroke={fortinetColors.primary.purple}
                             strokeWidth={2} 
                             activeDot={{ r: 8 }} 
                         />
@@ -94,7 +95,7 @@ export const WeeklyKeywordTrendChart: React.FC = () => {
                             type="monotone" 
                             dataKey="> Page 3"
                             name="> Page 3 (31+)"
-                            stroke="#989898" 
+                            stroke={fortinetColors.primary.teal}
                             strokeWidth={2} 
                             activeDot={{ r: 8 }} 
                         />
