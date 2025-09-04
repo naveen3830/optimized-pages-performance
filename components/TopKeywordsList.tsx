@@ -34,13 +34,13 @@ const DownArrowIcon = () => (
 );
 
 const calculateChange = (baseline: number, latest: number) => {
-    if (baseline === 0 || baseline === latest) {
+    if (baseline === latest) {
         return { value: 0, isImprovement: null };
     }
-    const change = ((latest - baseline) / baseline) * 100;
+    const delta = latest - baseline; // positive means worse rank (down), negative means improvement (up)
     return {
-        value: Math.round(Math.abs(change)),
-        isImprovement: change < 0,
+        value: Math.abs(delta),
+        isImprovement: delta < 0,
     };
 };
 
@@ -70,7 +70,7 @@ export const TopKeywordsList: React.FC = () => {
                                 Icon = <UpArrowIcon />;
                             }
                             if (change.isImprovement === false) {
-                                changeClass = 'text-error';
+                                changeClass = 'text-warning';
                                 Icon = <DownArrowIcon />;
                             }
 
@@ -83,7 +83,7 @@ export const TopKeywordsList: React.FC = () => {
                                     <td className={`p-3 text-center font-semibold ${changeClass}`}>
                                         <div className="flex items-center justify-center gap-1">
                                             {Icon}
-                                            <span>{change.value > 0 ? `${change.value}%` : '-'}</span>
+                                            <span>{change.value > 0 ? `${change.value}` : '-'}</span>
                                         </div>
                                     </td>
                                 </tr>

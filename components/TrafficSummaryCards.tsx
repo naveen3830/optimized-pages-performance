@@ -3,9 +3,10 @@ import { fortinetColors } from './fortinetTheme';
 
 export const TrafficSummaryCards: React.FC = () => {
 
-    const SummaryCard = ({ title, value, accent }: { title: string, value: string, accent: string }) => (
+    const SummaryCard = ({ title, value, accent, caption }: { title: string, value: string, accent: string, caption?: string }) => (
         <div className="bg-base-100 p-6 rounded-2xl shadow-lg flex-1 border" style={{ borderColor: accent }}>
-            <p className="text-mediumGrey text-md mb-2">{title}</p>
+            <p className="text-mediumGrey text-md mb-1">{title}</p>
+            {caption && (<p className="text-xs text-mediumGrey mb-2">{caption}</p>)}
             <p className="text-extraDarkGrey text-4xl font-bold">{value}</p>
         </div>
     );
@@ -18,7 +19,8 @@ export const TrafficSummaryCards: React.FC = () => {
                 accent={fortinetColors.primary.green}
             />
             <SummaryCard 
-                title="Traffic"
+                title="Monthly Traffic"
+                caption="40% growth"
                 value="7,626"
                 accent={fortinetColors.primary.blue}
             />

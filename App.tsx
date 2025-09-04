@@ -18,6 +18,7 @@ const App: React.FC = () => {
           <div className="flex-1 text-center">
             <h1 className="text-3xl font-extrabold text-extraDarkGrey">Optimized Pages Performance Dashboard</h1>
             <p className="text-sm text-mediumGrey">Analysis of 80 Optimized pages with monthly performance tracking.</p>
+            <p className="text-xs text-mediumGrey mt-1">Period: Apr 2025 - Aug 2025</p>
           </div>
           <div className="flex flex-col items-center">
             <img src="/LeadWalnut light logo with tagline 3.png" alt="LeadWalnut" className="h-10 w-auto" />

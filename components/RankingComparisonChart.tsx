@@ -34,7 +34,7 @@ export const RankingComparisonChart: React.FC = () => {
     });
 
     return (
-        <Card title="Keyword Ranking Evolution: Baseline vs. Latest">
+        <Card title="Keyword Ranking Trend: Baseline vs. Latest">
             <ResponsiveContainer width="100%" height={300}>
                 <BarChart data={comparisonData} margin={{ top: 5, right: 20, left: -10, bottom: 5 }}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#E0E0E0" />
@@ -49,14 +49,14 @@ export const RankingComparisonChart: React.FC = () => {
                         }}
                     />
                     <Legend />
-                    <Bar dataKey="Baseline" fill="#B6B6B6" name="Baseline" />
-                    <Bar dataKey="Latest" fill="#DA291C" name="Latest" />
+                    <Bar dataKey="Baseline" fill="#00BFB2" name="Baseline" />
+                    <Bar dataKey="Latest" fill="#0072CE" name="Latest" />
                 </BarChart>
             </ResponsiveContainer>
 
             <div className="mt-4 grid grid-cols-2 lg:grid-cols-4 gap-2">
                 {growthData.map(item => {
-                    const colorClass = item.value > 0 ? 'text-success' : item.value < 0 ? 'text-error' : 'text-mediumGrey';
+                    const colorClass = item.value > 0 ? 'text-success' : item.value < 0 ? 'text-warning' : 'text-mediumGrey';
                     const Icon = item.value > 0 ? UpArrowIcon : item.value < 0 ? DownArrowIcon : null;
                     const name = item.name.replace(/\s\(.*\)/, '');
 

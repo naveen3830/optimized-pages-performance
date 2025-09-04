@@ -29,7 +29,7 @@ export const OptimizedPagesGrowthChart: React.FC = () => {
     const data = processData();
 
     return (
-        <Card title="Optimized Pages Growth">
+        <Card title="Number of pages optimized">
             <ResponsiveContainer width="100%" height={300}>
                 <ComposedChart data={data} margin={{ top: 5, right: 20, left: -10, bottom: 5 }}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#E0E0E0" />
@@ -45,7 +45,7 @@ export const OptimizedPagesGrowthChart: React.FC = () => {
                     />
                     <Legend />
                     <Bar yAxisId="left" dataKey="Optimized Pages" fill="#989898" />
-                    <Line yAxisId="left" type="monotone" dataKey="Total Optimized Pages" stroke="#DA291C" strokeWidth={2} activeDot={{ r: 8 }} />
+                    <Line yAxisId="left" type="monotone" dataKey="Total Optimized Pages" stroke="#0072CE" strokeWidth={2} activeDot={{ r: 8 }} />
                 </ComposedChart>
             </ResponsiveContainer>
         </Card>

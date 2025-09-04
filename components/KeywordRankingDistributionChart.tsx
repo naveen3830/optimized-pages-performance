@@ -40,7 +40,7 @@ export const KeywordRankingDistributionChart: React.FC = () => {
                                             style={{ cursor: 'pointer' }}
                                         />
                                         {width > 40 && height > 24 && (
-                                            <text x={x + width / 2} y={y + height / 2} textAnchor="middle" dominantBaseline="central" fill="#FFFFFF" className="font-extrabold">
+                                            <text x={x + width / 2} y={y + height / 2} textAnchor="middle" dominantBaseline="central" fill="#FFFFFF" style={{ fontFamily: 'Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif', fontWeight: 800 }}>
                                                 {`${percent.toFixed(0)}%`}
                                             </text>
                                         )}
@@ -55,7 +55,7 @@ export const KeywordRankingDistributionChart: React.FC = () => {
                                         const percent = ((data.value as number) / totalKeywords) * 100;
                                         return (
                                             <div className="bg-white p-3 border rounded-lg shadow-lg" style={{ borderColor: theme.border }}>
-                                                <p className="font-semibold text-gray-800">{data.name}</p>
+                                                <p className="font-semibold text-gray-800" style={{ fontFamily: 'Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif' }}>{data.name}</p>
                                                 <p className="text-sm text-gray-600">
                                                     Keywords: <span className="font-bold">{data.value}</span>
                                                 </p>
@@ -94,6 +94,9 @@ export const KeywordRankingDistributionChart: React.FC = () => {
                             <tr className="border-t-2 border-grey">
                                 <td className="p-2 font-bold text-extraDarkGrey">Total Keywords</td>
                                 <td className="p-2 text-right font-bold text-extraDarkGrey">{totalKeywords}</td>
+                            </tr>
+                            <tr>
+                                <td className="p-2 text-mediumGrey" colSpan={2}>Remarks: 17 keywords are in Top 5 position</td>
                             </tr>
                         </tfoot>
                     </table>
